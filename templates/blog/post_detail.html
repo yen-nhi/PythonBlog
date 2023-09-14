@@ -1,0 +1,45 @@
+{% extends '../layout.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block body %}
+    <div class="container-sm">
+        <h2 class="text-center" style="padding: 30px">{{ post.title }}</h2>
+        <p>{{ post.content|safe }}</p>
+        <p><small>{{ post.author }}</small><small> ({{ post.created_at.date }})</small></p>
+        <br>
+        {% if user.is_authenticated %}
+            <form class="row" method="POST">
+                {% csrf_token %}
+                <div class="col-10 border-start border-success-subtle border-4">
+                    <textarea class="form-control" placeholder="Comment..." name="text"></textarea>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-dark mb-2">Send</button>
+                </div>
+            </form>
+
+        {% else %}
+            <div>
+                <a class="nav-link" href="{% provider_login_url 'google' %}?next={{ request.path }}">
+                    <button type="button" class="btn btn-dark">
+                        Write comment
+                    </button>
+                </a>
+            </div>
+        {% endif %}
+        <br>
+        <div class="comments">
+            <ul class="list-group">
+                {% for comment in comments %}
+                    <li class="list-group-item">
+                        <small>{{ comment.user.username }}</small>
+                        <p>{{ comment.text }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+{% endblock %}

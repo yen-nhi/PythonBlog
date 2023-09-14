@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-3" style="background-color: darkgray">
+            <img src="{% static 'images/me.png'%}" width="100%">
+            </div>
+            <div class="col-9">
+                <div class="personal" style="font-family: 'Courier New', Monospace; background-color: black; padding: 40px">
+                    <h3><span class="blue">Class </span><span class="green">NguyenThiYenNhi</span>:</h3>
+                    <br>
+                    <p class="orange">""" If I am an object """</p>
+                    <br>
+                    <p class="level-1"><span class="blue">def </span><span class="green">__init__</span>(<span class="violet">self</span>):</p>
+                    <p class="level-2"><span class="violet">self</span>.<span class="lightblue">fullname</span> = <span class="orange">"Nguyen Thi Yen Nhi"</span></p>
+                    <p class="level-2"><span class="violet">self</span>.<span class="lightblue">title</span> = <span class="orange">"Software Developer"</span></p>
+                    <p class="level-2"><span class="violet">self</span>.<span class="lightblue">year_of_birth</span> = <span class="lightblue">1992</span></p>
+                    <p class="level-2"><span class="violet">self</span>.<span class="lightblue">nationality</span> = <span class="orange">"Vietnam"</span></p>
+                    <br>
+                    <p class="level-1"><span class="blue">def </span><span class="green">mission</span>(<span class="violet">self</span>):</p>
+                    <p class="level-2"><span class="green">print</span>(<span class="orange">"""</span></p>
+                    <p class="level-2 orange">My page is created as a personal blog for python lover. However, I would like to
+                        welcome everybody who has the same interest and willing to contribute. You can write a new article in an super easy way, no need to log in.
+                        Your article will be approved by me, but don't worry, I just aware from spams or negative posts and I also work very actively,
+                        I never forget to approve your article for 100% sure.
+                    </p>
+                    <p class="level-2 orange">"""</p>
+                    <br/>
+                    <p class="level-1"><span class="blue">def </span><span class="green">contact</span>(<span class="violet">self</span>, <span class="blue">channel</span>: str):</p>
+                    <p class="level-2"><span class="green">if </span><span class="blue">channel</span> == <span class="orange">"email"</span>:</p>
+                    <p class="level-3"><span class="green">print</span>(<span class="orange">"yenhinguyen.92@gmail.com"</span>)</p>
+                    <p class="level-2"><span class="green">elif </span><span class="blue">channel</span> == <span class="orange">"linkedIn"</span>:</p>
+                    <p class="level-3"><span class="green">print</span>(<span class="orange">www.linkedin.com/in/nguyen-thi-yen-nhi-70622557</span>)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

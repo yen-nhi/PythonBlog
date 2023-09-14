@@ -1,0 +1,46 @@
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: darkblue;
+}
+
+.violet {
+    color: blueviolet;
+}
+
+.lightblue {
+    color: blue;
+}
+
+.orange {
+    color: wheat;
+}
+
+.level-1 {
+    padding-left: 40px;
+}
+
+.level-2 {
+    padding-left: 80px;
+}
+
+.level-3 {
+    padding-left: 120px;
+}
+
+.comment-form {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+small {
+    color: grey;
+}
+
+.comments {
+    padding-left: 50px;
+    padding-right: 110px;
+}

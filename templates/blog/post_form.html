@@ -1,0 +1,73 @@
+{% extends '../layout.html' %}
+{% load static %}
+{% block script %}
+    <script src="ckeditor/ckeditor.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container-sm">
+        <br/>
+        <h3>New post</h3>
+        {% if not user.is_authenticated %}
+            <p><small>* Log in to be recognized as a contributor. Otherwise, you can post as an anonymous user.</small>
+            </p>
+        {% endif %}
+        <br/>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {% if not user.is_authenticated %}
+                <div class="mb-3 col-md-3">
+                    <input type="text" class="form-control text-info" placeholder="Your display name or email"
+                           name="author">
+                </div>
+            {% else %}
+                <input type="text" name="author" value="{{ user.username }}" style="display: none">
+            {% endif %}
+            <div class="mb-3 border-start border-success-subtle border-4">
+                <input type="text" class="form-control fs-5" placeholder="Title" name="title">
+            </div>
+            <br/>
+            <div class="mb-3">
+                <textarea placeholder="Content" rows="50" id="editor" name="content"></textarea>
+            </div>
+            <button type="button" class="btn btn-dark mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Submit
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure everything is fine? You can't edit the article after submitting.</p>
+                            <p>Note that the post need the approval from the admin to be display on the blog. The process will take less than 1 day.</p>
+                            <p>Thank you for your contribution!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue editing
+                            </button>
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+    <script>
+        CKEDITOR.replace('editor');
+        CKEDITOR.config.uiColor = '#FFFFFF';
+        CKEDITOR.config.extraPlugins = 'autogrow';
+        CKEDITOR.config.autoGrow_minHeight = 450;
+        CKEDITOR.config.height = 450;
+    </script>
+
+{% endblock %}

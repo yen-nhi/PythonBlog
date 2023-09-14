@@ -1,0 +1,51 @@
+{% extends '../layout.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="a" style="height: 300px; overflow: hidden;">
+        <img src="{% static 'images/banner.png' %}" width="100%" style="margin-top: -350px">
+    </div>
+    <div class="container-sm">
+        <nav class="navbar">
+            <div class="container justify-content-end">
+                <form class="d-flex" method="GET">
+                    <input class="form-control me-2" type="search" name="search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        {% for post in object_list %}
+            <div class="card" style="margin: 20px">
+                <div class="card-body border-start border-success-subtle border-5">
+                    <p><small>{{ post.author }}</small></p>
+                    <a href="{% url 'blog/post_detail' pk=post.pk %}" class="text-reset text-decoration-none"><h5
+                            class="card-title">{{ post.title }}</h5></a>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+
+        {% endfor %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+                {#                <li class="page-item"><a class="page-link" href="#">1</a></li>#}
+                {#                <li class="page-item"><a class="page-link" href="#">2</a></li>#}
+                <li class="page-item"><p class="page-link">{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</p>
+                </li>
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
