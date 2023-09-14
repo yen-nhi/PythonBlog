@@ -1,5 +1,5 @@
-# PythonBlog
-# Set up project
+#PythonBlog
+#Set up project
   #Clone project:
   # git clone https://github.com/yen-nhi/PythonBlog.git
   
@@ -13,5 +13,5 @@
   # python3 manage.py migrate
   # python3 manage.py runserver
 
-# Enter browser, visit domain http://127.0.0.1:8000/home
+#Enter browser, visit domain http://127.0.0.1:8000/home
 
