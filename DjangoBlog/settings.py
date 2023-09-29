@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['18.143.249.157', 'pythonic.top', 'localhost', '127.0.0.1']
 
 SITE_ID = 2
 # Application definition
@@ -160,5 +160,5 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend'
 )
 
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_LOGIN_ON_GET = True

@@ -23,8 +23,15 @@
             <img src="{% static 'images/python_logo.png' %}" alt="Logo" width="30" style="padding-bottom: 10px">
             Pythonic
         </a>
+
+
         <ul class="nav justify-content-end" style="padding: 10px">
-        <li class="nav-item"><span class="nav-link text-white">{{ user.username }}</span></li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <span class="nav-link" style="color: white;"><img src="{% static 'images/user.png' %}"
+                                                                      width="24"> {{ user.username }}</span>
+                </li>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{% url 'blog/post_list' %}">Blog</a>
             </li>
@@ -36,11 +43,12 @@
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}?next=/home">Sign out</a>
+                    <a class="nav-link" href="{% url 'logout' %}?next=/">Sign out</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% provider_login_url 'google' %}?next={{ request.path }}">Sign in with Google</a>
+                    <a class="nav-link" href="{% provider_login_url 'google' %}?next={{ request.path }}">Sign in with
+                        Google</a>
                 </li>
             {% endif %}
         </ul>

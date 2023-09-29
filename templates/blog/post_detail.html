@@ -4,9 +4,18 @@
 
 {% block body %}
     <div class="container-sm">
-        <h2 class="text-center" style="padding: 30px">{{ post.title }}</h2>
-        <p>{{ post.content|safe }}</p>
-        <p><small>{{ post.author }}</small><small> ({{ post.created_at.date }})</small></p>
+        <div class="title-img-wrap">
+            <div class="post-header">
+                <h1 class="post-title">{{ post.title }}</h1>
+                <br>
+                <p>
+                    <span><img src="{% static 'images/user.png' %}"></span>
+                    <span style="font-weight: bold; margin-left: 10px;">{{ post.author }}</span>
+                </p>
+            </div>
+        </div>
+        <br>
+        <p class="fs-5 text-body-secondary">{{ post.content|safe }}</p>
         <br>
         {% if user.is_authenticated %}
             <form class="row" method="POST">

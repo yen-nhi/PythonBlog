@@ -12,15 +12,14 @@ from blog import constant
 
 class PostListView(ListView):
     model = Post
-    ordering = ['-created_at']
     paginate_by = constant.PAGINATION_PER_PAGE
 
     def get_queryset(self):
         search = self.request.GET.get('search')
         if search:
-            object_list = self.model.objects.filter(approved=True, title__icontains=search)
+            object_list = self.model.objects.filter(approved=True, title__icontains=search).order_by('-id')
         else:
-            object_list = self.model.objects.filter(approved=True)
+            object_list = self.model.objects.filter(approved=True).order_by('-id')
         return object_list
 
 
@@ -77,5 +76,5 @@ class AboutView(TemplateView):
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        return redirect('/home')
+        return redirect('/')
 

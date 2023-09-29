@@ -23,7 +23,7 @@ from blog.views import PostListView, PostDetailView, CreatePostView, AboutView, 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home', PostListView.as_view(), name='blog/post_list'),
+    path('', PostListView.as_view(), name='blog/post_list'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='blog/post_detail'),
     path('create_post/', CreatePostView.as_view(), name='create_post'),
     path('about/', AboutView.as_view(), name='about_page'),
